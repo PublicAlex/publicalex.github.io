@@ -564,6 +564,7 @@
                 </button>
                 <div id="modal-image" class="aspect-video bg-slate-800 m-0.5 rounded-xl overflow-hidden"></div>
                 <div id="modal-thumbs" class="hidden flex-wrap gap-2 px-6 sm:px-8 pt-4"></div>
+                <p id="modal-sample" class="hidden px-6 sm:px-8 pt-3 text-xs text-slate-500"></p>
                 <div class="p-6 sm:p-8">
                     <span id="modal-category" class="text-xs text-blue-400 font-medium"></span>
                     <h3 id="modal-title" class="text-2xl font-bold text-white mt-2 mb-4 font-display"></h3>
@@ -665,21 +666,25 @@
                 description: 'Portfolio y CV de Alexander Aragón, ingeniero de software especializado en integración de IA, backend y automatización DevOps.',
                 cv: 'files/cv.pdf',
                 viewProject: 'Ver proyecto',
-                privateCode: 'Código privado'
+                privateCode: 'Código privado',
+                sample: 'Capturas con datos de ejemplo.'
             },
             en: {
                 title: 'Alexander Aragón - Software Engineer | AI & DevOps',
                 description: 'Portfolio and résumé of Alexander Aragón, a software engineer specialized in AI integration, backend and DevOps automation.',
                 cv: 'files/cv-en.pdf',
                 viewProject: 'View project',
-                privateCode: 'Private source code'
+                privateCode: 'Private source code',
+                sample: 'Screenshots use sample data.'
             }
         };
 
-        // cover: portada generada (images/covers/<cover>-<idioma>.webp); images: capturas reales
+        // images: capturas ('@cover' = diagrama images/covers/<cover>-<idioma>.webp); sample: capturas con datos de ejemplo
         const projects = [
             {
                 cover: 'auto-postulador',
+                images: ['images/projects/auto-postulador-1.webp', 'images/projects/auto-postulador-2.webp', 'images/projects/auto-postulador-3.webp', 'images/projects/auto-postulador-4.webp', '@cover'],
+                sample: true,
                 category: { es: 'IA & Automatización', en: 'AI & Automation' },
                 title: { es: 'Auto-postulador de empleos con IA', en: 'AI Job Auto-Applier' },
                 short: {
@@ -695,6 +700,8 @@
             },
             {
                 cover: 'asesor-voz',
+                images: ['images/projects/asesor-voz-1.webp', '@cover'],
+                sample: true,
                 category: { es: 'IA conversacional', en: 'Conversational AI' },
                 title: { es: 'Asesor de ventas por voz', en: 'AI Voice Sales Agent' },
                 short: {
@@ -731,6 +738,8 @@
             },
             {
                 cover: 'opencode-mobile',
+                images: ['images/projects/opencode-mobile-1.webp', '@cover'],
+                sample: true,
                 category: { es: 'Herramientas dev', en: 'Dev tools' },
                 title: { es: 'Opencode Mobile', en: 'Opencode Mobile' },
                 short: {
@@ -746,6 +755,8 @@
             },
             {
                 cover: 'security-monitor',
+                images: ['images/projects/security-monitor-1.webp', '@cover'],
+                sample: true,
                 category: { es: 'DevOps · Seguridad', en: 'DevOps · Security' },
                 title: { es: 'Monitor de seguridad para Ubuntu', en: 'Ubuntu Security Monitor' },
                 short: {
@@ -761,21 +772,24 @@
             },
             {
                 cover: 'gps-moto',
-                category: { es: 'IoT · Hardware', en: 'IoT · Hardware' },
-                title: { es: 'GPS para moto', en: 'Motorcycle GPS' },
+                images: ['images/projects/gps-moto-1.webp', 'images/projects/gps-moto-2.webp', '@cover'],
+                category: { es: 'IoT · Android', en: 'IoT · Android' },
+                title: { es: 'Alerta Fotomultas (GPS para moto)', en: 'Speed Camera Alert (Motorcycle GPS)' },
                 short: {
-                    es: 'ESP32-C3 con GPS y pantalla OLED que avisa de cámaras de fotodetección si vas sobre el límite.',
-                    en: 'ESP32-C3 with GPS and an OLED display that warns about speed cameras when you are over the limit.'
+                    es: 'Avisa de cámaras de fotodetección si vas sobre el límite: dispositivo ESP32 con GPS y app Android sin internet.',
+                    en: 'Warns about speed cameras when you are over the limit: an ESP32 GPS device and an offline Android app.'
                 },
                 description: {
-                    es: 'Dispositivo de bajo costo para moto: un ESP32-C3 SuperMini con GPS NEO-6M y pantalla OLED que avisa cuando te acercas a una cámara de fotodetección en Colombia y vas por encima del límite. Graba los viajes automáticamente, se configura por Wi-Fi con un portal cautivo y guarda datos de órbitas para que el GPS fije la posición más rápido. Incluye herramientas en Python para consolidar la base de cámaras, cargarla al equipo y ver cámaras y viajes en mapas. Prototipo funcionando en banco de pruebas.',
-                    en: 'Low-cost motorcycle device: an ESP32-C3 SuperMini with a NEO-6M GPS and an OLED display that warns you when approaching a speed camera in Colombia above the limit. It records trips automatically, is configured over Wi-Fi through a captive portal, and stores orbit data so the GPS gets a fix faster. It includes Python tools to build the camera database, load it onto the device and view cameras and trips on maps. Working prototype, bench-tested.'
+                    es: 'Sistema de bajo costo que avisa al motociclista cuando se acerca a una cámara de fotodetección en Colombia y va por encima del límite. Tiene dos versiones con la misma lista de 725 cámaras y la misma lógica de alerta: un dispositivo con ESP32-C3, GPS NEO-6M y pantalla OLED, que graba los viajes y se configura por Wi-Fi, y una app Android que funciona sin internet, pesa unos 97 KB y avisa con pantalla, vibración y notificación. Incluye herramientas en Python para consolidar la lista de cámaras (ANSV, secretarías de movilidad y OpenStreetMap) y verla en un mapa. Las dos versiones están probadas en banco; falta la prueba en ruta.',
+                    en: 'Low-cost system that warns motorcyclists when approaching a speed camera in Colombia above the limit. It comes in two versions sharing the same list of 725 cameras and the same alert logic: a device with an ESP32-C3, a NEO-6M GPS and an OLED display that records trips and is configured over Wi-Fi, and an Android app that works offline, weighs about 97 KB and alerts with screen, vibration and notification. It includes Python tools to build the camera list (national road safety agency, city transit offices and OpenStreetMap) and view it on a map. Both versions are bench-tested; road testing is pending.'
                 },
-                tech: ['ESP32', 'C++ (Arduino)', 'Python', 'GPS', 'OpenStreetMap'],
+                tech: ['ESP32', 'C++ (Arduino)', 'Kotlin', 'Android', 'Python', 'OpenStreetMap'],
                 links: []
             },
             {
                 cover: 'nequi-confirmer',
+                images: ['images/projects/nequi-confirmer-1.webp', '@cover'],
+                sample: true,
                 category: { es: 'App Android · Pagos', en: 'Android App · Payments' },
                 title: { es: 'Nequi Confirmer', en: 'Nequi Confirmer' },
                 short: {
@@ -791,6 +805,7 @@
             },
             {
                 cover: 'alerta-destino',
+                images: ['images/projects/alerta-destino-1.webp', '@cover'],
                 category: { es: 'App Android', en: 'Android App' },
                 title: { es: 'AlertaDestino', en: 'AlertaDestino' },
                 short: {
@@ -837,7 +852,9 @@
         }
 
         function projectImages(p) {
-            return p.cover ? ['images/covers/' + p.cover + '-' + lang + '.webp'] : p.images;
+            const cover = 'images/covers/' + p.cover + '-' + lang + '.webp';
+            if (!p.images) return [cover];
+            return p.images.map(src => src === '@cover' ? cover : src);
         }
 
         function renderProjects() {
@@ -879,6 +896,10 @@
                 thumbs.classList.add('hidden');
                 thumbs.classList.remove('flex');
             }
+
+            const sample = document.getElementById('modal-sample');
+            sample.textContent = META[lang].sample;
+            sample.classList.toggle('hidden', !p.sample);
 
             document.getElementById('modal-category').textContent = tr(p.category);
             document.getElementById('modal-title').textContent = tr(p.title);
