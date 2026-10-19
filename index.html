@@ -29,33 +29,38 @@
 <body class="bg-slate-950 text-slate-300 font-sans antialiased">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-lg border-b border-slate-800/50">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-lg border-b border-slate-800/50 transition-transform duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <a href="#" class="text-xl font-bold text-blue-400 font-display">AA</a>
-                <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                    <a href="#inicio" class="text-slate-400 hover:text-white transition-colors">Inicio</a>
-                    <a href="#sobre-mi" class="text-slate-400 hover:text-white transition-colors">Sobre mí</a>
-                    <a href="#habilidades" class="text-slate-400 hover:text-white transition-colors">Habilidades</a>
-                    <a href="#experiencia" class="text-slate-400 hover:text-white transition-colors">Experiencia</a>
-                    <a href="#proyectos" class="text-slate-400 hover:text-white transition-colors">Proyectos</a>
-                    <a href="#contacto" class="text-slate-400 hover:text-white transition-colors">Contacto</a>
-                </div>
-                <button id="menu-btn" class="md:hidden text-slate-400 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex items-center gap-6">
+                    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                        <a href="#inicio" class="text-slate-400 hover:text-white transition-colors" data-i18n="nav.inicio">Inicio</a>
+                        <a href="#sobre-mi" class="text-slate-400 hover:text-white transition-colors" data-i18n="nav.sobre">Sobre mí</a>
+                        <a href="#habilidades" class="text-slate-400 hover:text-white transition-colors" data-i18n="nav.habilidades">Habilidades</a>
+                        <a href="#experiencia" class="text-slate-400 hover:text-white transition-colors" data-i18n="nav.experiencia">Experiencia</a>
+                        <a href="#proyectos" class="text-slate-400 hover:text-white transition-colors" data-i18n="nav.proyectos">Proyectos</a>
+                        <a href="#contacto" class="text-slate-400 hover:text-white transition-colors" data-i18n="nav.contacto">Contacto</a>
+                    </div>
+                    <button id="lang-btn" type="button" class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-700 hover:border-blue-500/50 text-xs font-semibold transition-colors" title="Cambiar idioma / Change language">
+                        <span data-lang-opt="es">ES</span><span class="text-slate-700">/</span><span data-lang-opt="en">EN</span>
+                    </button>
+                    <button id="menu-btn" class="md:hidden text-slate-400 hover:text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
-                </button>
+                    </button>
+                </div>
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800/50 bg-slate-950/95 backdrop-blur-lg">
             <div class="px-4 py-3 space-y-2 text-sm font-medium">
-                <a href="#inicio" class="block py-2 text-slate-400 hover:text-white transition-colors">Inicio</a>
-                <a href="#sobre-mi" class="block py-2 text-slate-400 hover:text-white transition-colors">Sobre mí</a>
-                <a href="#habilidades" class="block py-2 text-slate-400 hover:text-white transition-colors">Habilidades</a>
-                <a href="#experiencia" class="block py-2 text-slate-400 hover:text-white transition-colors">Experiencia</a>
-                <a href="#proyectos" class="block py-2 text-slate-400 hover:text-white transition-colors">Proyectos</a>
-                <a href="#contacto" class="block py-2 text-slate-400 hover:text-white transition-colors">Contacto</a>
+                <a href="#inicio" class="block py-2 text-slate-400 hover:text-white transition-colors" data-i18n="nav.inicio">Inicio</a>
+                <a href="#sobre-mi" class="block py-2 text-slate-400 hover:text-white transition-colors" data-i18n="nav.sobre">Sobre mí</a>
+                <a href="#habilidades" class="block py-2 text-slate-400 hover:text-white transition-colors" data-i18n="nav.habilidades">Habilidades</a>
+                <a href="#experiencia" class="block py-2 text-slate-400 hover:text-white transition-colors" data-i18n="nav.experiencia">Experiencia</a>
+                <a href="#proyectos" class="block py-2 text-slate-400 hover:text-white transition-colors" data-i18n="nav.proyectos">Proyectos</a>
+                <a href="#contacto" class="block py-2 text-slate-400 hover:text-white transition-colors" data-i18n="nav.contacto">Contacto</a>
             </div>
         </div>
     </nav>
@@ -67,21 +72,21 @@
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
                 <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse-slow"></span>
-                IA · BACKEND · DEVOPS
+                <span data-i18n="hero.badge">IA · BACKEND · DEVOPS</span>
             </div>
-            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold font-display text-white leading-tight mb-6">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold font-display text-white leading-tight mb-6" data-i18n="hero.title">
                 Soy <span class="text-blue-400">Alexander,</span><br>
                 ingeniero de software
             </h1>
-            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-8 leading-relaxed" data-i18n="hero.sub">
                 Especializado en integración de IA, backend y automatización DevOps.
                 Construyo soluciones inteligentes, escalables y robustas.
             </p>
             <div class="flex flex-wrap items-center justify-center gap-4">
-                <a href="#contacto" class="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-500 transition-all duration-300">
+                <a href="#contacto" class="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-500 transition-all duration-300" data-i18n="hero.cta1">
                     Contáctame
                 </a>
-                <a href="#proyectos" class="px-6 py-3 rounded-xl border border-slate-700 text-slate-300 font-semibold hover:bg-slate-800 transition-all duration-300">
+                <a href="#proyectos" class="px-6 py-3 rounded-xl border border-slate-700 text-slate-300 font-semibold hover:bg-slate-800 transition-all duration-300" data-i18n="hero.cta2">
                     Ver proyectos
                 </a>
             </div>
@@ -110,7 +115,7 @@
     <section id="sobre-mi" class="py-20 sm:py-28">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4">Sobre mí</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4" data-i18n="about.title">Sobre mí</h2>
                 <div class="w-20 h-1 bg-blue-500 rounded-full mx-auto"></div>
             </div>
             <div class="grid md:grid-cols-5 gap-8 items-center">
@@ -120,29 +125,29 @@
                     </div>
                 </div>
                 <div class="md:col-span-3 space-y-4">
-                    <p class="text-slate-300 leading-relaxed text-lg">
+                    <p class="text-slate-300 leading-relaxed text-lg" data-i18n="about.p1">
                         Ingeniero de Sistemas / Software con más de 3 años de experiencia en el desarrollo
                         de soluciones tecnológicas e integración de <span class="text-blue-400 font-medium">Inteligencia Artificial</span>.
                         Especializado en automatizar tareas repetitivas en procesos DevOps y en la generación
                         de código mediante modelos de IA para acelerar los ciclos de desarrollo.
                     </p>
-                    <p class="text-slate-400 leading-relaxed">
+                    <p class="text-slate-400 leading-relaxed" data-i18n="about.p2">
                         Experto en configurar y mantener pipelines CI/CD, desplegar servicios inteligentes en entornos
                         Cloud, y gestionar infraestructura con tecnologías como <span class="text-blue-400 font-medium">NestJS</span>,
                         <span class="text-blue-400 font-medium">TypeScript</span>, Python, Java, PHP, Docker,
                         Kubernetes, Terraform, AWS, DigitalOcean, Jenkins, GitHub Actions, Prometheus y Grafana.
                     </p>
-                    <p class="text-slate-400 leading-relaxed">
+                    <p class="text-slate-400 leading-relaxed" data-i18n="about.p3">
                         Colaboro activamente con equipos de desarrollo, operaciones y arquitectura para asegurar
                         la máxima escalabilidad y eficiencia, documentando soluciones y promoviendo buenas prácticas
                         en el uso de IA aplicada.
                     </p>
-                    <a href="files/cv.pdf" target="_blank"
+                    <a href="files/cv.pdf" target="_blank" data-cv
                        class="inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-medium transition-all duration-300">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
-                        Descargar CV
+                        <span data-i18n="about.cv">Descargar CV</span>
                     </a>
                 </div>
             </div>
@@ -153,7 +158,7 @@
     <section id="habilidades" class="py-20 sm:py-28 bg-slate-900/50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4">Habilidades</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4" data-i18n="skills.title">Habilidades</h2>
                 <div class="w-20 h-1 bg-blue-500 rounded-full mx-auto"></div>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -165,7 +170,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
                             </svg>
                         </div>
-                        <h3 class="text-white font-semibold text-sm sm:text-base">Cloud & Orquestación</h3>
+                        <h3 class="text-white font-semibold text-sm sm:text-base" data-i18n="skills.cloud">Cloud & Orquestación</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs border border-slate-700">AWS</span>
@@ -207,10 +212,11 @@
                         <h3 class="text-white font-semibold text-sm sm:text-base">Infra & DevOps</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs border border-slate-700">Pipelines CI/CD</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs border border-slate-700" data-i18n="skills.pipelines">Pipelines CI/CD</span>
                         <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs border border-slate-700">Jenkins</span>
                         <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs border border-slate-700">GitHub Actions</span>
                         <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs border border-slate-700">Linux Servers</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs border border-slate-700">Windows Server</span>
                         <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs border border-slate-700">Sysadmin</span>
                     </div>
                 </div>
@@ -222,7 +228,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                             </svg>
                         </div>
-                        <h3 class="text-white font-semibold text-sm sm:text-base">IA & Automatización</h3>
+                        <h3 class="text-white font-semibold text-sm sm:text-base" data-i18n="skills.ia">IA & Automatización</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs border border-slate-700">LLM</span>
@@ -239,7 +245,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                             </svg>
                         </div>
-                        <h3 class="text-white font-semibold text-sm sm:text-base">Monitoreo & Datos</h3>
+                        <h3 class="text-white font-semibold text-sm sm:text-base" data-i18n="skills.monitoreo">Monitoreo & Datos</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs border border-slate-700">Prometheus</span>
@@ -258,7 +264,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
                             </svg>
                         </div>
-                        <h3 class="text-white font-semibold text-sm sm:text-base">Bases de Datos & Servicios</h3>
+                        <h3 class="text-white font-semibold text-sm sm:text-base" data-i18n="skills.db">Bases de Datos & Servicios</h3>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs border border-slate-700">MySQL</span>
@@ -277,7 +283,7 @@
     <section id="experiencia" class="py-20 sm:py-28">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4">Trayectoria</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4" data-i18n="exp.title">Trayectoria</h2>
                 <div class="w-20 h-1 bg-blue-500 rounded-full mx-auto"></div>
             </div>
             <div class="grid lg:grid-cols-2 gap-12">
@@ -287,18 +293,34 @@
                         <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
-                        Experiencia
+                        <span data-i18n="exp.experiencia">Experiencia</span>
                     </h3>
                     <div class="space-y-0">
                         <div class="relative pl-8 pb-8 border-l-2 border-slate-800">
                             <div class="absolute left-0 top-0 -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-slate-950"></div>
                             <div class="bg-slate-800/30 rounded-xl p-5 border border-slate-800 hover:border-blue-500/20 transition-all duration-300">
                                 <div class="flex items-start justify-between gap-4 mb-2">
-                                    <h4 class="font-semibold text-white">Innobyte Nexus Partners, SL</h4>
-                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800">feb 2025 - Presente</span>
+                                    <h4 class="font-semibold text-white">Accion Y Mision Cyg Sas</h4>
+                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800" data-i18n="exp.acc.fecha">jul 2026 - Presente</span>
                                 </div>
-                                <p class="text-sm text-blue-400/80 mb-2">Desarrollador IA (Backend) & DevOps</p>
-                                <ul class="text-sm text-slate-400 leading-relaxed space-y-1.5 list-disc list-inside">
+                                <p class="text-sm text-blue-400/80 mb-2" data-i18n="exp.acc.cargo">Desarrollador</p>
+                                <ul class="text-sm text-slate-400 leading-relaxed space-y-1.5 list-disc list-inside" data-i18n="exp.acc.logros">
+                                    <li>Levantamiento de requerimientos con el cliente para diseñar soluciones de software a medida.</li>
+                                    <li>Automatización con IA de tareas DevOps y de servidores Windows, como respaldos y notificaciones de cobros recurrentes.</li>
+                                    <li>Herramientas de análisis de datos de ventas, inventario, nómina, PyG y reportes bancarios.</li>
+                                    <li>Pipelines CI/CD con GitHub Actions para el despliegue de 5 servicios en un único servidor.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="relative pl-8 pb-8 border-l-2 border-slate-800">
+                            <div class="absolute left-0 top-0 -translate-x-1/2 w-4 h-4 rounded-full bg-slate-600 border-4 border-slate-950"></div>
+                            <div class="bg-slate-800/30 rounded-xl p-5 border border-slate-800 hover:border-blue-500/20 transition-all duration-300">
+                                <div class="flex items-start justify-between gap-4 mb-2">
+                                    <h4 class="font-semibold text-white">Innobyte Nexus Partners, SL</h4>
+                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800" data-i18n="exp.inno.fecha">feb 2025 - may 2026</span>
+                                </div>
+                                <p class="text-sm text-blue-400/80 mb-2" data-i18n="exp.inno.cargo">Desarrollador IA (Backend) & DevOps</p>
+                                <ul class="text-sm text-slate-400 leading-relaxed space-y-1.5 list-disc list-inside" data-i18n="exp.inno.logros">
                                     <li>Soluciones IA para automatizar tareas DevOps y administración de servidores Linux.</li>
                                     <li>Generación de código y scripts con modelos de IA para desarrollo backend corporativo.</li>
                                     <li>Configuración y mantenimiento de pipelines CI/CD con Jenkins y GitHub Actions.</li>
@@ -311,10 +333,10 @@
                             <div class="bg-slate-800/30 rounded-xl p-5 border border-slate-800 hover:border-blue-500/20 transition-all duration-300">
                                 <div class="flex items-start justify-between gap-4 mb-2">
                                     <h4 class="font-semibold text-white">Freelancer</h4>
-                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800">oct 2024 - Presente</span>
+                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800" data-i18n="exp.free.fecha">oct 2024 - Presente</span>
                                 </div>
-                                <p class="text-sm text-blue-400/80 mb-2">Desarrollador Freelancer</p>
-                                <p class="text-sm text-slate-400 leading-relaxed">
+                                <p class="text-sm text-blue-400/80 mb-2" data-i18n="exp.free.cargo">Desarrollador Freelancer</p>
+                                <p class="text-sm text-slate-400 leading-relaxed" data-i18n="exp.free.desc">
                                     Desarrollo de proyectos backend, configuración de servidores e integración
                                     de scripts automatizados para clientes internacionales. Destacando por la calidad
                                     de entrega y comunicación constante.
@@ -326,10 +348,10 @@
                             <div class="bg-slate-800/30 rounded-xl p-5 border border-slate-800 hover:border-blue-500/20 transition-all duration-300">
                                 <div class="flex items-start justify-between gap-4 mb-2">
                                     <h4 class="font-semibold text-white">ArgusTICs</h4>
-                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800">oct 2023 - jul 2024</span>
+                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800" data-i18n="exp.argus.fecha">oct 2023 - jul 2024</span>
                                 </div>
                                 <p class="text-sm text-blue-400/80 mb-2">FullStack Dev & Cloud Ops</p>
-                                <ul class="text-sm text-slate-400 leading-relaxed space-y-1.5 list-disc list-inside">
+                                <ul class="text-sm text-slate-400 leading-relaxed space-y-1.5 list-disc list-inside" data-i18n="exp.argus.logros">
                                     <li>Despliegue de servicios y entornos con orquestación K3s y Rancher.</li>
                                     <li>Infraestructura de servidores con monitoreo (Prometheus, Grafana).</li>
                                     <li>Desarrollo de MVPs y soluciones escalables para múltiples clientes.</li>
@@ -342,10 +364,10 @@
                             <div class="bg-slate-800/30 rounded-xl p-5 border border-slate-800 hover:border-blue-500/20 transition-all duration-300">
                                 <div class="flex items-start justify-between gap-4 mb-2">
                                     <h4 class="font-semibold text-white">Gobernación del Huila</h4>
-                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800">feb 2023 - jul 2023</span>
+                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800" data-i18n="exp.gob.fecha">feb 2023 - jul 2023</span>
                                 </div>
-                                <p class="text-sm text-blue-400/80 mb-2">Ingeniero de Software</p>
-                                <ul class="text-sm text-slate-400 leading-relaxed space-y-1.5 list-disc list-inside">
+                                <p class="text-sm text-blue-400/80 mb-2" data-i18n="exp.gob.cargo">Ingeniero de Software</p>
+                                <ul class="text-sm text-slate-400 leading-relaxed space-y-1.5 list-disc list-inside" data-i18n="exp.gob.logros">
                                     <li>Automatización de procesos de caracterización con scripts y software a medida.</li>
                                     <li>Diseño y desarrollo de sistemas eficientes adaptados a restricciones operativas.</li>
                                     <li>Documentación de soluciones y requerimientos usando técnicas de obtención de información.</li>
@@ -360,7 +382,7 @@
                         <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
                         </svg>
-                        Educación
+                        <span data-i18n="exp.educacion">Educación</span>
                     </h3>
                     <div class="space-y-0">
                         <div class="relative pl-8 pb-8 border-l-2 border-slate-800">
@@ -368,10 +390,10 @@
                             <div class="bg-slate-800/30 rounded-xl p-5 border border-slate-800 hover:border-blue-500/20 transition-all duration-300">
                                 <div class="flex items-start justify-between gap-4 mb-2">
                                     <h4 class="font-semibold text-white">Universidad Surcolombiana</h4>
-                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800">jul 2025</span>
+                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800" data-i18n="edu.usco.fecha">jul 2025</span>
                                 </div>
-                                <p class="text-sm text-blue-400/80 mb-2">Ingeniería de Software</p>
-                                <p class="text-sm text-slate-400 leading-relaxed">
+                                <p class="text-sm text-blue-400/80 mb-2" data-i18n="edu.usco.titulo">Ingeniería de Software</p>
+                                <p class="text-sm text-slate-400 leading-relaxed" data-i18n="edu.usco.desc">
                                     Desarrollé habilidades para analizar requerimientos, diseñar y desarrollar soluciones de software
                                     adaptadas a las necesidades de diversos clientes. Esta preparación me ha permitido crear tanto
                                     soluciones personalizadas para terceros como proyectos de desarrollo propios.
@@ -383,10 +405,10 @@
                             <div class="bg-slate-800/30 rounded-xl p-5 border border-slate-800 hover:border-blue-500/20 transition-all duration-300">
                                 <div class="flex items-start justify-between gap-4 mb-2">
                                     <h4 class="font-semibold text-white">Universidad Nacional</h4>
-                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800">dic 2021</span>
+                                    <span class="text-xs text-slate-500 whitespace-nowrap px-2 py-1 rounded bg-slate-800" data-i18n="edu.unal.fecha">dic 2021</span>
                                 </div>
-                                <p class="text-sm text-blue-400/80 mb-2">Diplomado en Desarrollo Web</p>
-                                <p class="text-sm text-slate-400 leading-relaxed">
+                                <p class="text-sm text-blue-400/80 mb-2" data-i18n="edu.unal.titulo">Diplomado en Desarrollo Web</p>
+                                <p class="text-sm text-slate-400 leading-relaxed" data-i18n="edu.unal.desc">
                                     Participé en un programa gubernamental para fortalecer mis conocimientos en desarrollo web y
                                     metodologías modernas. Aprendí arquitectura de microservicios, bases de datos no relacionales,
                                     autenticación con JWT, y herramientas clave para el desarrollo y despliegue de aplicaciones web.
@@ -403,104 +425,14 @@
     <section id="proyectos" class="py-20 sm:py-28 bg-slate-900/50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4">Proyectos</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4" data-i18n="projects.title">Proyectos</h2>
                 <div class="w-20 h-1 bg-blue-500 rounded-full mx-auto"></div>
-                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">
-                    Estos son algunos de mis proyectos favoritos que he realizado últimamente.
-                    No dudes en echarles un vistazo.
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto" data-i18n="projects.sub">
+                    Una selección de proyectos de IA, automatización, DevOps, IoT y apps móviles.
+                    Haz clic en cualquiera para ver cómo funciona.
                 </p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div onclick="openModal(0)" class="cursor-pointer group rounded-xl bg-slate-800/30 border border-slate-800 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                    <div class="aspect-video bg-slate-800 overflow-hidden">
-                        <img src="images/inmosurco.png" alt="Inmobiliaria Surcolombiana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-xs text-blue-400 font-medium">Página Web</span>
-                        <h3 class="text-lg font-semibold text-white mt-1 mb-2">Inmobiliaria Surcolombiana</h3>
-                        <p class="text-sm text-slate-400 line-clamp-2">Sitio web para operaciones de registro de inmuebles y contacto con clientes.</p>
-                        <div class="flex flex-wrap gap-2 mt-3">
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">WordPress</span>
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">PHP</span>
-                        </div>
-                    </div>
-                </div>
-                <div onclick="openModal(1)" class="cursor-pointer group rounded-xl bg-slate-800/30 border border-slate-800 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                    <div class="aspect-video bg-slate-800 overflow-hidden">
-                        <img src="images/rp-landing.png" alt="Racket Pulse Landing Page" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-xs text-blue-400 font-medium">Página Web</span>
-                        <h3 class="text-lg font-semibold text-white mt-1 mb-2">Racket Pulse - Landing Page</h3>
-                        <p class="text-sm text-slate-400 line-clamp-2">Landing page moderna y de alto impacto. NestJS + React para máxima conversión.</p>
-                        <div class="flex flex-wrap gap-2 mt-3">
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">NestJS</span>
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">React</span>
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">TypeScript</span>
-                        </div>
-                    </div>
-                </div>
-                <div onclick="openModal(2)" class="cursor-pointer group rounded-xl bg-slate-800/30 border border-slate-800 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                    <div class="aspect-video bg-slate-800 overflow-hidden">
-                        <img src="images/rp-backoffice.png" alt="Racket Pulse Backoffice" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-xs text-blue-400 font-medium">Sistema Web</span>
-                        <h3 class="text-lg font-semibold text-white mt-1 mb-2">Racket Pulse - Backoffice</h3>
-                        <p class="text-sm text-slate-400 line-clamp-2">Gestión de reservas, usuarios, pagos y reportes en tiempo real.</p>
-                        <div class="flex flex-wrap gap-2 mt-3">
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">NestJS</span>
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">React</span>
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">PostgreSQL</span>
-                        </div>
-                    </div>
-                </div>
-                <div onclick="openModal(3)" class="cursor-pointer group rounded-xl bg-slate-800/30 border border-slate-800 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                    <div class="aspect-video bg-slate-800 overflow-hidden">
-                        <img src="images/rp-admin.png" alt="Racket Pulse Admin Panel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-xs text-blue-400 font-medium">Sistema Web</span>
-                        <h3 class="text-lg font-semibold text-white mt-1 mb-2">Racket Pulse - Admin Panel</h3>
-                        <p class="text-sm text-slate-400 line-clamp-2">Control total de roles, permisos, configuración y monitoreo en vivo.</p>
-                        <div class="flex flex-wrap gap-2 mt-3">
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">NestJS</span>
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">React</span>
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">Docker</span>
-                        </div>
-                    </div>
-                </div>
-                <div onclick="openModal(4)" class="cursor-pointer group rounded-xl bg-slate-800/30 border border-slate-800 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                    <div class="aspect-video bg-slate-800 overflow-hidden">
-                        <img src="images/rp-android.png" alt="Racket Pulse Android" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-xs text-blue-400 font-medium">App Móvil</span>
-                        <h3 class="text-lg font-semibold text-white mt-1 mb-2">Racket Pulse - Android</h3>
-                        <p class="text-sm text-slate-400 line-clamp-2">App nativa en React Native con notificaciones push y gestión de reservas.</p>
-                        <div class="flex flex-wrap gap-2 mt-3">
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">React Native</span>
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">TypeScript</span>
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">Node.js</span>
-                        </div>
-                    </div>
-                </div>
-                <div onclick="openModal(5)" class="cursor-pointer group rounded-xl bg-slate-800/30 border border-slate-800 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                    <div class="aspect-video bg-slate-800 overflow-hidden">
-                        <img src="images/rp-ios.png" alt="Racket Pulse iOS" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-5">
-                        <span class="text-xs text-blue-400 font-medium">App Móvil</span>
-                        <h3 class="text-lg font-semibold text-white mt-1 mb-2">Racket Pulse - iOS</h3>
-                        <p class="text-sm text-slate-400 line-clamp-2">App iOS nativa con React Native, optimizada para el ecosistema Apple.</p>
-                        <div class="flex flex-wrap gap-2 mt-3">
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">React Native</span>
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">TypeScript</span>
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">Node.js</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </div>
     </section>
 
@@ -508,7 +440,7 @@
     <section class="py-20 sm:py-28">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4">Testimonios</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4" data-i18n="testi.title">Testimonios</h2>
                 <div class="w-20 h-1 bg-blue-500 rounded-full mx-auto"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-6">
@@ -517,10 +449,10 @@
                         <img src="images/goyo.png" alt="Goyo M." class="w-10 h-10 rounded-full object-cover">
                         <div>
                             <p class="font-semibold text-white text-sm">Goyo M.</p>
-                            <p class="text-xs text-slate-500">España</p>
+                            <p class="text-xs text-slate-500" data-i18n="testi.spain">España</p>
                         </div>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="testi.goyo">
                         "Alexander demostró ser una persona extremadamente atenta y comprometida con su trabajo.
                         No solo detectó rápidamente el problema, sino que me explicó las causas y posibles soluciones.
                         Compartió recomendaciones valiosas para mejorar el proyecto. ¡100% recomendable!"
@@ -531,10 +463,10 @@
                         <img src="images/alistair.png" alt="Alistair R." class="w-10 h-10 rounded-full object-cover">
                         <div>
                             <p class="font-semibold text-white text-sm">Alistair R.</p>
-                            <p class="text-xs text-slate-500">Reino Unido</p>
+                            <p class="text-xs text-slate-500" data-i18n="testi.uk">Reino Unido</p>
                         </div>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="testi.alistair">
                         "Alexander fue más allá de lo esperado, haciendo un esfuerzo adicional para apoyarme en cada detalle.
                         Su dedicación y compromiso fueron evidentes en todo momento. ¡Altamente recomendado!"
                     </p>
@@ -544,10 +476,10 @@
                         <img src="images/avatars/user-01.jpg" alt="Óscar V." class="w-10 h-10 rounded-full object-cover">
                         <div>
                             <p class="font-semibold text-white text-sm">Óscar V.</p>
-                            <p class="text-xs text-slate-500">España</p>
+                            <p class="text-xs text-slate-500" data-i18n="testi.spain">España</p>
                         </div>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="testi.oscar">
                         "Alexander fue increíblemente atento y respondió con una rapidez que superó mis expectativas.
                         Su disposición para ayudar y resolver mis dudas de manera inmediata hizo el proceso mucho más eficiente."
                     </p>
@@ -557,10 +489,10 @@
                         <img src="images/avatars/user-06.jpg" alt="Pedro G." class="w-10 h-10 rounded-full object-cover">
                         <div>
                             <p class="font-semibold text-white text-sm">Pedro G.</p>
-                            <p class="text-xs text-slate-500">España</p>
+                            <p class="text-xs text-slate-500" data-i18n="testi.spain">España</p>
                         </div>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="testi.pedro">
                         "Trabajar con Alexander ha sido una experiencia excelente. Desde el inicio, se mostró sumamente atento
                         y dispuesto a ayudarme en todo. Sin duda, volveré a contratarlo en el futuro."
                     </p>
@@ -573,9 +505,9 @@
     <section id="contacto" class="py-20 sm:py-28 bg-slate-900/50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4">Contacto</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4" data-i18n="contact.title">Contacto</h2>
                 <div class="w-20 h-1 bg-blue-500 rounded-full mx-auto"></div>
-                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto" data-i18n="contact.sub">
                     Me encantaría saber de ti. Si tienes preguntas, necesitas ayuda con un proyecto o simplemente
                     quieres charlar sobre desarrollo backend, integración de servicios o tecnología en general,
                     no dudes en enviarme un mensaje.
@@ -598,12 +530,12 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                             </svg>
                         </div>
-                        <h3 class="text-white font-semibold mb-1">Teléfono</h3>
+                        <h3 class="text-white font-semibold mb-1" data-i18n="contact.phone">Teléfono</h3>
                         <a href="tel:+573203063817" class="text-slate-400 hover:text-blue-400 transition-colors text-sm">+57 320 3063817</a>
                     </div>
                 </div>
                 <div class="text-center">
-                    <p class="text-slate-500 text-sm mb-4">O encuéntrame en redes sociales</p>
+                    <p class="text-slate-500 text-sm mb-4" data-i18n="contact.social">O encuéntrame en redes sociales</p>
                     <div class="flex items-center justify-center gap-6">
                         <a href="https://www.freelancer.com.co/u/AlexanderAragon" target="_blank" class="text-slate-500 hover:text-blue-400 transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M14.06 3.5c-2.23.04-3.56.47-4.72 1.34-1.16.87-1.89 2.17-2.17 3.88h2.17c.22-1.1.67-1.97 1.34-2.6.67-.63 1.55-.98 2.63-1.16V3.5h.75ZM12 5.47c-1.57.12-2.78.78-3.62 1.97-.84 1.19-1.26 2.72-1.26 4.59 0 2.35.52 4.21 1.56 5.59 1.04 1.38 2.44 2.07 4.2 2.07 1.65 0 2.94-.66 3.87-1.97.93-1.31 1.4-3.01 1.4-5.1 0-1.7-.3-3.12-.89-4.26-.59-1.14-1.44-1.97-2.54-2.5-1.1-.53-2.36-.67-3.78-.4h.06Zm.37 2.44c.68.09 1.27.37 1.76.84.49.47.86 1.07 1.11 1.8.25.73.38 1.58.38 2.55 0 1.48-.3 2.7-.91 3.66-.61.96-1.5 1.44-2.67 1.44-1.07 0-1.9-.43-2.49-1.3-.59-.87-.89-2.09-.89-3.66 0-1.56.28-2.8.84-3.72.56-.92 1.29-1.44 2.19-1.57.09-.01.18-.02.28-.02.83 0 1.54.16 2.14.47.6.31 1.05.73 1.35 1.26L12 10.16l-1.62-.47c-.1.54-.17 1.06-.2 1.56l1.73.22 1.72-.22c.02-.5-.01-1.02-.08-1.56L12 10.16 10.38 9.7c-.14.42-.24.86-.3 1.3l1.92.59 1.92-.59c-.06-.44-.16-.88-.3-1.3L12 10.16l-1.62.47c.05.3.11.59.2.87.09.28.2.52.33.72l1.09-.78 1.09.78c.13-.2.24-.44.33-.72.09-.28.15-.57.2-.87L12 10.16l-1.09.78Z"/></svg>
@@ -631,20 +563,16 @@
                     </svg>
                 </button>
                 <div id="modal-image" class="aspect-video bg-slate-800 m-0.5 rounded-xl overflow-hidden"></div>
+                <div id="modal-thumbs" class="hidden flex-wrap gap-2 px-6 sm:px-8 pt-4"></div>
                 <div class="p-6 sm:p-8">
                     <span id="modal-category" class="text-xs text-blue-400 font-medium"></span>
                     <h3 id="modal-title" class="text-2xl font-bold text-white mt-2 mb-4 font-display"></h3>
                     <p id="modal-description" class="text-slate-400 leading-relaxed"></p>
                     <div class="mt-6">
-                        <h4 class="text-sm font-semibold text-white mb-3">Tecnologías</h4>
+                        <h4 class="text-sm font-semibold text-white mb-3" data-i18n="modal.tech">Tecnologías</h4>
                         <div id="modal-tech" class="flex flex-wrap gap-2"></div>
                     </div>
-                    <a id="modal-link" href="#" target="_blank" class="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-500 transition-all duration-300">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                        </svg>
-                        Ver proyecto
-                    </a>
+                    <div id="modal-links" class="flex flex-wrap gap-3 mt-6"></div>
                 </div>
             </div>
         </div>
@@ -654,77 +582,321 @@
     <footer class="py-8 border-t border-slate-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600">
-                <span>&copy; 2025 Alexander Aragón. Todos los derechos reservados.</span>
+                <span data-i18n="footer.rights">&copy; 2026 Alexander Aragón. Todos los derechos reservados.</span>
                 <div class="flex items-center gap-4">
-                    <a href="#inicio" class="hover:text-blue-400 transition-colors">Inicio</a>
-                    <a href="#sobre-mi" class="hover:text-blue-400 transition-colors">Sobre mí</a>
-                    <a href="#contacto" class="hover:text-blue-400 transition-colors">Contacto</a>
-                    <a href="privacidad.html" class="hover:text-blue-400 transition-colors">Privacidad</a>
+                    <a href="#inicio" class="hover:text-blue-400 transition-colors" data-i18n="nav.inicio">Inicio</a>
+                    <a href="#sobre-mi" class="hover:text-blue-400 transition-colors" data-i18n="nav.sobre">Sobre mí</a>
+                    <a href="#contacto" class="hover:text-blue-400 transition-colors" data-i18n="nav.contacto">Contacto</a>
+                    <a href="privacidad.html" class="hover:text-blue-400 transition-colors" data-i18n="footer.privacy">Privacidad</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // Textos en ingles; el espanol se toma del HTML (data-i18n)
+        const I18N_EN = {
+            'nav.inicio': 'Home',
+            'nav.sobre': 'About',
+            'nav.habilidades': 'Skills',
+            'nav.experiencia': 'Experience',
+            'nav.proyectos': 'Projects',
+            'nav.contacto': 'Contact',
+            'hero.badge': 'AI · BACKEND · DEVOPS',
+            'hero.title': 'I\'m <span class="text-blue-400">Alexander,</span><br>a software engineer',
+            'hero.sub': 'Specialized in AI integration, backend and DevOps automation. I build intelligent, scalable and robust solutions.',
+            'hero.cta1': 'Contact me',
+            'hero.cta2': 'View projects',
+            'about.title': 'About me',
+            'about.p1': 'Systems / Software Engineer with over 3 years of experience building technology solutions and integrating <span class="text-blue-400 font-medium">Artificial Intelligence</span>. Specialized in automating repetitive DevOps tasks and generating code with AI models to speed up development cycles.',
+            'about.p2': 'Skilled in configuring and maintaining CI/CD pipelines, deploying intelligent services to the Cloud and managing infrastructure with technologies such as <span class="text-blue-400 font-medium">NestJS</span>, <span class="text-blue-400 font-medium">TypeScript</span>, Python, Java, PHP, Docker, Kubernetes, Terraform, AWS, DigitalOcean, Jenkins, GitHub Actions, Prometheus and Grafana.',
+            'about.p3': 'I work closely with development, operations and architecture teams to ensure scalability and efficiency, documenting solutions and promoting best practices in applied AI.',
+            'about.cv': 'Download CV',
+            'skills.title': 'Skills',
+            'skills.cloud': 'Cloud & Orchestration',
+            'skills.pipelines': 'CI/CD Pipelines',
+            'skills.ia': 'AI & Automation',
+            'skills.monitoreo': 'Monitoring & Data',
+            'skills.db': 'Databases & Services',
+            'exp.title': 'Career',
+            'exp.experiencia': 'Experience',
+            'exp.educacion': 'Education',
+            'exp.acc.fecha': 'Jul 2026 - Present',
+            'exp.acc.cargo': 'Developer',
+            'exp.acc.logros': '<li>Requirements gathering with clients to design custom software solutions.</li><li>AI-driven automation of DevOps and Windows Server tasks, such as backups and recurring billing notifications.</li><li>Data analysis tools for sales, inventory, payroll, P&amp;L and bank reports.</li><li>CI/CD pipelines with GitHub Actions deploying 5 services on a single server.</li>',
+            'exp.inno.fecha': 'Feb 2025 - May 2026',
+            'exp.inno.cargo': 'AI Developer (Backend) & DevOps',
+            'exp.inno.logros': '<li>AI solutions to automate DevOps tasks and Linux server administration.</li><li>Code and script generation with AI models for corporate backend development.</li><li>Setup and maintenance of CI/CD pipelines with Jenkins and GitHub Actions.</li><li>Deployment of intelligent services on AWS and DigitalOcean.</li>',
+            'exp.free.fecha': 'Oct 2024 - Present',
+            'exp.free.cargo': 'Freelance Developer',
+            'exp.free.desc': 'Backend projects, server configuration and automated script integration for international clients, standing out for delivery quality and constant communication.',
+            'exp.argus.fecha': 'Oct 2023 - Jul 2024',
+            'exp.argus.logros': '<li>Deployment of services and environments orchestrated with K3s and Rancher.</li><li>Server infrastructure with monitoring (Prometheus, Grafana).</li><li>MVPs and scalable solutions for multiple clients.</li><li>Highly complex improvements while ensuring system performance.</li>',
+            'exp.gob.fecha': 'Feb 2023 - Jul 2023',
+            'exp.gob.cargo': 'Software Engineer',
+            'exp.gob.logros': '<li>Automation of population characterization processes with scripts and custom software.</li><li>Design and development of efficient systems adapted to operational constraints.</li><li>Documentation of solutions and requirements using information-gathering techniques.</li>',
+            'edu.usco.fecha': 'Jul 2025',
+            'edu.usco.titulo': 'Software Engineering',
+            'edu.usco.desc': 'I developed the skills to analyze requirements and to design and build software solutions tailored to the needs of different clients. This background has allowed me to create both custom solutions for third parties and my own development projects.',
+            'edu.unal.fecha': 'Dec 2021',
+            'edu.unal.titulo': 'Web Development Diploma',
+            'edu.unal.desc': 'I took part in a government program to strengthen my knowledge of web development and modern methodologies. I learned microservices architecture, non-relational databases, JWT authentication and key tools for developing and deploying web applications.',
+            'projects.title': 'Projects',
+            'projects.sub': 'A selection of AI, automation, DevOps, IoT and mobile projects. Click any of them to see how it works.',
+            'testi.title': 'Testimonials',
+            'testi.spain': 'Spain',
+            'testi.uk': 'United Kingdom',
+            'testi.goyo': '"Alexander was extremely attentive and committed throughout. Not only was the problem spotted quickly, but its causes and possible solutions were clearly explained, along with valuable recommendations to improve the project. 100% recommended!"',
+            'testi.alistair': '"Alexander went above and beyond, making an extra effort to support me with every detail. The dedication and commitment were evident at all times. Highly recommended!"',
+            'testi.oscar': '"Alexander was incredibly attentive and responded faster than I expected. The willingness to help and solve my questions right away made the whole process much more efficient."',
+            'testi.pedro': '"Working with Alexander has been an excellent experience. Extremely attentive and willing to help with everything from the very start. I will definitely hire Alexander again."',
+            'contact.title': 'Contact',
+            'contact.sub': 'I would love to hear from you. If you have questions, need help with a project or just want to chat about backend development, service integration or technology in general, feel free to send me a message.',
+            'contact.phone': 'Phone',
+            'contact.social': 'Or find me on social media',
+            'modal.tech': 'Technologies',
+            'footer.rights': '&copy; 2026 Alexander Aragón. All rights reserved.',
+            'footer.privacy': 'Privacy'
+        };
+
+        const META = {
+            es: {
+                title: 'Alexander Aragón - Ingeniero de Software | IA & DevOps',
+                description: 'Portfolio y CV de Alexander Aragón, ingeniero de software especializado en integración de IA, backend y automatización DevOps.',
+                cv: 'files/cv.pdf',
+                viewProject: 'Ver proyecto',
+                privateCode: 'Código privado'
+            },
+            en: {
+                title: 'Alexander Aragón - Software Engineer | AI & DevOps',
+                description: 'Portfolio and résumé of Alexander Aragón, a software engineer specialized in AI integration, backend and DevOps automation.',
+                cv: 'files/cv-en.pdf',
+                viewProject: 'View project',
+                privateCode: 'Private source code'
+            }
+        };
+
+        // cover: portada generada (images/covers/<cover>-<idioma>.webp); images: capturas reales
         const projects = [
             {
-                img: 'images/inmosurco.png',
-                category: 'Página Web',
-                title: 'Inmobiliaria Surcolombiana',
-                description: 'Desarrollamos un sitio web para las operaciones de registro de inmuebles y contacto con el cliente de la inmobiliaria Surcolombiana. El desarrollo se efectuó en WordPress y el servicio se entregó completamente funcional y con garantía de soporte por 1 año.',
+                cover: 'auto-postulador',
+                category: { es: 'IA & Automatización', en: 'AI & Automation' },
+                title: { es: 'Auto-postulador de empleos con IA', en: 'AI Job Auto-Applier' },
+                short: {
+                    es: 'Scrapea 5 portales de empleo, analiza cada oferta contra el CV con Gemini y postula sola.',
+                    en: 'Scrapes 5 job boards, scores every offer against the CV with Gemini and applies on its own.'
+                },
+                description: {
+                    es: 'Sistema que busca ofertas en LinkedIn, Computrabajo, elempleo, Indeed y Workana con scrapers en Python y Playwright. Cada oferta se analiza con IA contra el CV del usuario (Gemini, en lotes para ahorrar cuota, con control de límites y reintentos), y a las compatibles se postula automáticamente en los portales que lo permiten; al final envía un reporte por correo. Soporta varios usuarios, tiene panel web de administración y programador de corridas, y corre en un servidor Linux desplegado con GitHub Actions y systemd. Ya ha analizado miles de ofertas.',
+                    en: 'System that collects job offers from LinkedIn, Computrabajo, elempleo, Indeed and Workana with Python and Playwright scrapers. Every offer is scored by AI against the user\'s CV (Gemini, batched to save quota, with rate limiting and retries), and matching offers get an automatic application on the boards that allow it; a summary is then sent by email. It supports multiple users, has a web admin panel and a run scheduler, and runs on a Linux server deployed with GitHub Actions and systemd. It has already analyzed thousands of offers.'
+                },
+                tech: ['Python', 'Playwright', 'Gemini', 'SQLite', 'GitHub Actions', 'systemd'],
+                links: []
+            },
+            {
+                cover: 'asesor-voz',
+                category: { es: 'IA conversacional', en: 'Conversational AI' },
+                title: { es: 'Asesor de ventas por voz', en: 'AI Voice Sales Agent' },
+                short: {
+                    es: 'Prototipo que conversa por voz en tiempo real con Gemini Live y registra el resultado de la llamada.',
+                    en: 'Prototype that holds real-time voice conversations with Gemini Live and logs the call outcome.'
+                },
+                description: {
+                    es: 'Prototipo de asesor de ventas que atiende una llamada y conversa por voz en tiempo real. Una sola conexión a Gemini Live escucha al cliente, decide qué responder y habla, con respuestas en 1,2 a 1,9 segundos, frente a unos 4,9 s de la cadena voz a texto + LLM + texto a voz, que también medí. El guion de venta, las objeciones y los productos se editan en un archivo de texto, y durante la llamada el asesor ejecuta acciones (cliente quiere comprar, no interesado, colgar) que se envían por webhook. Si el cliente lo interrumpe, se calla en unos 0,4 s.',
+                    en: 'Sales agent prototype that answers a call and talks in real time. A single Gemini Live connection listens to the customer, decides what to say and speaks, replying in 1.2 to 1.9 seconds, versus about 4.9 s for a speech-to-text + LLM + text-to-speech chain, which I also benchmarked. The sales script, objections and products live in an editable text file, and during the call the agent triggers actions (customer wants to buy, not interested, hang up) that are sent through a webhook. When the customer interrupts, it stops talking within about 0.4 s.'
+                },
+                tech: ['Python', 'Gemini Live', 'WebSocket', 'Web Audio', 'Webhooks'],
+                links: []
+            },
+            {
+                images: ['images/rp-landing.png', 'images/rp-backoffice.png', 'images/rp-admin.png', 'images/rp-android.png', 'images/rp-ios.png'],
+                category: { es: 'Plataforma web y móvil', en: 'Web & mobile platform' },
+                title: { es: 'Racket Pulse', en: 'Racket Pulse' },
+                short: {
+                    es: 'Plataforma de pádel: landing, backoffice, panel de administración y apps para Android e iOS.',
+                    en: 'Padel platform: landing page, backoffice, admin panel and Android and iOS apps.'
+                },
+                description: {
+                    es: 'Plataforma completa para jugadores y clubes de pádel, desarrollada en Innobyte Nexus Partners. Incluye landing page, backoffice para gestionar reservas, usuarios, pagos y reportes, panel de administración con roles, permisos y monitoreo en vivo, y apps nativas para Android e iOS hechas con React Native. Trabajé en la arquitectura backend con NestJS y TypeScript, las APIs para web y móvil, las integraciones con Stripe, Fiuu y Nominatim, y el despliegue de los servicios.',
+                    en: 'Full platform for padel players and clubs, built at Innobyte Nexus Partners. It includes a landing page, a backoffice to manage bookings, users, payments and reports, an admin panel with roles, permissions and live monitoring, and native Android and iOS apps built with React Native. I worked on the NestJS/TypeScript backend architecture, the web and mobile APIs, the Stripe, Fiuu and Nominatim integrations, and service deployment.'
+                },
+                tech: ['NestJS', 'TypeScript', 'React', 'React Native', 'PostgreSQL', 'Docker'],
+                links: [
+                    { label: 'Landing', url: 'https://racketpulse.com/' },
+                    { label: 'Backoffice', url: 'https://backoffice.racketpulse.com/' },
+                    { label: 'Admin', url: 'https://sysadmin.racketpulse.com/' },
+                    { label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.racketpulse.app' },
+                    { label: 'App Store', url: 'https://apps.apple.com/es/app/racket-pulse/id6749810362' }
+                ]
+            },
+            {
+                cover: 'opencode-mobile',
+                category: { es: 'Herramientas dev', en: 'Dev tools' },
+                title: { es: 'Opencode Mobile', en: 'Opencode Mobile' },
+                short: {
+                    es: 'Agente Node.js + MQTT + app Android para seguir en vivo, desde el celular, a un agente de código con IA.',
+                    en: 'Node.js agent + MQTT + Android app to follow an AI coding agent live from your phone.'
+                },
+                description: {
+                    es: 'Permite monitorear desde el celular, en tiempo real y sin estar en la misma red, las terminales de Opencode (un agente de programación con IA) que corren en el PC. Un agente en Node.js y TypeScript escucha los eventos de Opencode por SSE y los publica en un broker MQTT (HiveMQ Cloud); la app Android, hecha en Kotlin con Jetpack Compose, se suscribe al canal y muestra las terminales en vivo. El emparejamiento se hace escaneando un código QR, y el agente arranca Opencode si no está corriendo.',
+                    en: 'Lets you monitor, in real time and from anywhere, the Opencode terminals (an AI coding agent) running on your PC. A Node.js/TypeScript agent listens to Opencode events over SSE and publishes them to an MQTT broker (HiveMQ Cloud); the Android app, built with Kotlin and Jetpack Compose, subscribes to the channel and shows the terminals live. Pairing is done by scanning a QR code, and the agent starts Opencode if it is not running.'
+                },
+                tech: ['Node.js', 'TypeScript', 'MQTT', 'Kotlin', 'Jetpack Compose'],
+                links: []
+            },
+            {
+                cover: 'security-monitor',
+                category: { es: 'DevOps · Seguridad', en: 'DevOps · Security' },
+                title: { es: 'Monitor de seguridad para Ubuntu', en: 'Ubuntu Security Monitor' },
+                short: {
+                    es: 'Servicio systemd en Bash que avisa al celular cada acceso SSH, uso de sudo y comando sensible.',
+                    en: 'Bash systemd service that pushes a phone alert for every SSH login, sudo use and sensitive command.'
+                },
+                description: {
+                    es: 'Servicio para servidores Ubuntu que vigila los registros del sistema y envía una notificación push por Gotify ante accesos SSH, uso de sudo y comandos sensibles como docker o rm. Tiene filtros configurables (por ejemplo, ignorar accesos con llave pública desde redes privadas), deduplicación de eventos para no saturar de alertas y control de instancia única. Se instala en un solo paso: el instalador detecta si es una instalación nueva o una actualización y lo deja corriendo como servicio systemd.',
+                    en: 'Service for Ubuntu servers that watches system logs and sends a Gotify push notification on SSH logins, sudo use and sensitive commands such as docker or rm. It has configurable filters (for example, ignoring public-key logins from private networks), event deduplication to avoid alert fatigue, and single-instance locking. It installs in one step: the installer detects whether it is a new install or an update and leaves it running as a systemd service.'
+                },
+                tech: ['Bash', 'systemd', 'Linux', 'Gotify', 'SSH'],
+                links: []
+            },
+            {
+                cover: 'gps-moto',
+                category: { es: 'IoT · Hardware', en: 'IoT · Hardware' },
+                title: { es: 'GPS para moto', en: 'Motorcycle GPS' },
+                short: {
+                    es: 'ESP32-C3 con GPS y pantalla OLED que avisa de cámaras de fotodetección si vas sobre el límite.',
+                    en: 'ESP32-C3 with GPS and an OLED display that warns about speed cameras when you are over the limit.'
+                },
+                description: {
+                    es: 'Dispositivo de bajo costo para moto: un ESP32-C3 SuperMini con GPS NEO-6M y pantalla OLED que avisa cuando te acercas a una cámara de fotodetección en Colombia y vas por encima del límite. Graba los viajes automáticamente, se configura por Wi-Fi con un portal cautivo y guarda datos de órbitas para que el GPS fije la posición más rápido. Incluye herramientas en Python para consolidar la base de cámaras, cargarla al equipo y ver cámaras y viajes en mapas. Prototipo funcionando en banco de pruebas.',
+                    en: 'Low-cost motorcycle device: an ESP32-C3 SuperMini with a NEO-6M GPS and an OLED display that warns you when approaching a speed camera in Colombia above the limit. It records trips automatically, is configured over Wi-Fi through a captive portal, and stores orbit data so the GPS gets a fix faster. It includes Python tools to build the camera database, load it onto the device and view cameras and trips on maps. Working prototype, bench-tested.'
+                },
+                tech: ['ESP32', 'C++ (Arduino)', 'Python', 'GPS', 'OpenStreetMap'],
+                links: []
+            },
+            {
+                cover: 'nequi-confirmer',
+                category: { es: 'App Android · Pagos', en: 'Android App · Payments' },
+                title: { es: 'Nequi Confirmer', en: 'Nequi Confirmer' },
+                short: {
+                    es: 'Confirma que un pago Nequi sí llegó cruzando el comprobante con la notificación real, y lo anuncia en voz alta.',
+                    en: 'Confirms a Nequi payment really arrived by matching the receipt with the real notification, and announces it out loud.'
+                },
+                description: {
+                    es: 'App Android para negocios que cobran por Nequi. Muestra el QR de cobro y escanea el comprobante del cliente; luego lo cruza con la notificación o el SMS real de Nequi (monto, nombre y hora) para confirmar que el pago sí llegó, y anuncia el resultado en voz alta. Guarda el historial de pagos en una base de datos local.',
+                    en: 'Android app for shops that get paid through Nequi. It shows the payment QR and scans the customer\'s receipt, then matches it against the real Nequi notification or SMS (amount, name and time) to confirm the payment actually arrived, and announces the result out loud. Payment history is stored in a local database.'
+                },
+                tech: ['Kotlin', 'Jetpack Compose', 'CameraX', 'ML Kit', 'Room', 'Text-to-Speech'],
+                links: []
+            },
+            {
+                cover: 'alerta-destino',
+                category: { es: 'App Android', en: 'Android App' },
+                title: { es: 'AlertaDestino', en: 'AlertaDestino' },
+                short: {
+                    es: 'Alarma GPS que suena cuando te acercas a tu parada de bus. Publicada en Google Play.',
+                    en: 'GPS alarm that rings as you approach your bus stop. Published on Google Play.'
+                },
+                description: {
+                    es: 'App Android que te avisa cuando te acercas a tu parada destino, para no pasarte durante un viaje en bus. Eliges la parada en Google Maps y un servicio en primer plano sigue tu ubicación por GPS aunque la app esté cerrada; al acercarte suena la alarma. Puede reanudar el monitoreo después de reiniciar el teléfono y guarda tus destinos frecuentes.',
+                    en: 'Android app that alerts you as you approach your destination stop, so you never miss it on a bus ride. You pick the stop on Google Maps and a foreground service tracks your GPS location even with the app closed; the alarm rings as you get close. It can resume monitoring after a phone restart and saves your frequent destinations.'
+                },
+                tech: ['Kotlin', 'Jetpack Compose', 'Google Maps', 'Foreground Service'],
+                links: [
+                    { label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.alertadestino.app' }
+                ]
+            },
+            {
+                images: ['images/inmosurco.png'],
+                category: { es: 'Página Web', en: 'Website' },
+                title: { es: 'Inmobiliaria Surcolombiana', en: 'Inmobiliaria Surcolombiana' },
+                short: {
+                    es: 'Sitio web para operaciones de registro de inmuebles y contacto con clientes.',
+                    en: 'Website for property listings and client contact.'
+                },
+                description: {
+                    es: 'Desarrollamos un sitio web para las operaciones de registro de inmuebles y contacto con el cliente de la inmobiliaria Surcolombiana. El desarrollo se efectuó en WordPress y el servicio se entregó completamente funcional y con garantía de soporte por 1 año.',
+                    en: 'We built a website for the real estate agency Inmobiliaria Surcolombiana to register properties and handle client contact. It was built in WordPress and delivered fully functional with a one-year support guarantee.'
+                },
                 tech: ['WordPress', 'PHP', 'HTML', 'CSS'],
-                link: 'https://inmobiliariasurcolombiana.com.co/'
-            },
-            {
-                img: 'images/rp-landing.png',
-                category: 'Página Web',
-                title: 'Racket Pulse - Landing Page',
-                description: 'Landing page moderna y de alto impacto para la plataforma Racket Pulse. Diseñada con una interfaz minimalista y atractiva que convierte visitantes en usuarios. Desarrollada con NestJS en el backend y React en el frontend, ofreciendo rendimiento óptimo y una experiencia de usuario excepcional.',
-                tech: ['NestJS', 'React', 'TypeScript', 'TailwindCSS'],
-                link: 'https://racketpulse.com/'
-            },
-            {
-                img: 'images/rp-backoffice.png',
-                category: 'Sistema Web',
-                title: 'Racket Pulse - Backoffice',
-                description: 'Potente sistema de gestión backoffice para administrar reservas, usuarios, pagos y reportes en tiempo real. Panel intuitivo y escalable construido con una arquitectura robusta en NestJS y React, diseñado para facilitar la operación diaria y la toma de decisiones basada en datos.',
-                tech: ['NestJS', 'React', 'TypeScript', 'PostgreSQL'],
-                link: 'https://backoffice.racketpulse.com/'
-            },
-            {
-                img: 'images/rp-admin.png',
-                category: 'Sistema Web',
-                title: 'Racket Pulse - Admin Panel',
-                description: 'Panel de administración avanzado con control total sobre la plataforma. Gestiona roles, permisos, configuraciones del sistema y monitoreo en vivo con una interfaz clara y eficiente. La herramienta definitiva para supervisores y administradores del sistema.',
-                tech: ['NestJS', 'React', 'TypeScript', 'Docker'],
-                link: 'https://sysadmin.racketpulse.com/'
-            },
-            {
-                img: 'images/rp-android.png',
-                category: 'App Móvil',
-                title: 'Racket Pulse - Android',
-                description: 'Aplicación móvil nativa para Android desarrollada con React Native. Los usuarios pueden gestionar reservas, recibir notificaciones push instantáneas y acceder a todas las funcionalidades de la plataforma desde cualquier lugar. Descárgala en Google Play y lleva Racket Pulse contigo.',
-                tech: ['React Native', 'TypeScript', 'Node.js'],
-                link: 'https://play.google.com/store/apps/details?id=com.racketpulse.app'
-            },
-            {
-                img: 'images/rp-ios.png',
-                category: 'App Móvil',
-                title: 'Racket Pulse - iOS',
-                description: 'App nativa para iOS desarrollada con React Native, optimizada para el ecosistema Apple con animaciones fluidas y diseño adaptado a las guías de interfaz humana de iOS. Reserva, gestiona y recibe notificaciones directamente en tu iPhone o iPad.',
-                tech: ['React Native', 'TypeScript', 'Node.js'],
-                link: 'https://apps.apple.com/es/app/racket-pulse/id6749810362'
+                links: [
+                    { label: { es: 'Ver proyecto', en: 'View project' }, url: 'https://inmobiliariasurcolombiana.com.co/' }
+                ]
             }
         ];
 
+        const ICON_EXTERNAL = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>`;
+        const ICON_LOCK = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>';
+
+        let lang = 'es';
+
+        function tr(value) {
+            return value !== null && typeof value === 'object' ? (value[lang] || value.es) : value;
+        }
+
+        function projectImages(p) {
+            return p.cover ? ['images/covers/' + p.cover + '-' + lang + '.webp'] : p.images;
+        }
+
+        function renderProjects() {
+            document.getElementById('projects-grid').innerHTML = projects.map((p, i) => `
+                <div onclick="openModal(${i})" onkeydown="if (event.key === 'Enter') openModal(${i})" role="button" tabindex="0" class="cursor-pointer group rounded-xl bg-slate-800/30 border border-slate-800 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
+                    <div class="aspect-video bg-slate-800 overflow-hidden">
+                        <img src="${projectImages(p)[0]}" alt="${tr(p.title)}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs text-blue-400 font-medium">${tr(p.category)}</span>
+                        <h3 class="text-lg font-semibold text-white mt-1 mb-2">${tr(p.title)}</h3>
+                        <p class="text-sm text-slate-400 line-clamp-2">${tr(p.short)}</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            ${p.tech.slice(0, 3).map(t => '<span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-500">' + t + '</span>').join('')}
+                        </div>
+                    </div>
+                </div>`).join('');
+        }
+
+        function showModalImage(src, alt) {
+            document.getElementById('modal-image').innerHTML = '<img src="' + src + '" alt="' + alt + '" class="w-full h-full object-cover">';
+        }
+
         function openModal(index) {
             const p = projects[index];
-            document.getElementById('modal-image').innerHTML = '<img src="' + p.img + '" alt="' + p.title + '" class="w-full h-full object-cover">';
-            document.getElementById('modal-category').textContent = p.category;
-            document.getElementById('modal-title').textContent = p.title;
-            document.getElementById('modal-description').textContent = p.description;
+            const images = projectImages(p);
+            showModalImage(images[0], tr(p.title));
+
+            const thumbs = document.getElementById('modal-thumbs');
+            if (images.length > 1) {
+                thumbs.innerHTML = images.map(src => '<button type="button" class="w-20 aspect-video rounded-lg overflow-hidden border border-slate-700 hover:border-blue-500/60 transition-colors"><img src="' + src + '" alt="" class="w-full h-full object-cover"></button>').join('');
+                thumbs.querySelectorAll('button').forEach((btn, i) => {
+                    btn.addEventListener('click', () => showModalImage(images[i], tr(p.title)));
+                });
+                thumbs.classList.remove('hidden');
+                thumbs.classList.add('flex');
+            } else {
+                thumbs.innerHTML = '';
+                thumbs.classList.add('hidden');
+                thumbs.classList.remove('flex');
+            }
+
+            document.getElementById('modal-category').textContent = tr(p.category);
+            document.getElementById('modal-title').textContent = tr(p.title);
+            document.getElementById('modal-description').textContent = tr(p.description);
             document.getElementById('modal-tech').innerHTML = p.tech.map(t => '<span class="px-3 py-1 rounded-lg bg-slate-800 text-slate-400 text-sm border border-slate-700">' + t + '</span>').join('');
-            document.getElementById('modal-link').href = p.link;
+
+            const links = document.getElementById('modal-links');
+            if (p.links.length) {
+                links.innerHTML = p.links.map((l, i) => {
+                    const style = i === 0
+                        ? 'bg-blue-600 text-white hover:bg-blue-500'
+                        : 'border border-slate-700 text-slate-300 hover:bg-slate-800';
+                    return '<a href="' + l.url + '" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all duration-300 ' + style + '">' + ICON_EXTERNAL + tr(l.label) + '</a>';
+                }).join('');
+            } else {
+                links.innerHTML = '<span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 text-slate-400 text-sm border border-slate-700">' + ICON_LOCK + META[lang].privateCode + '</span>';
+            }
+
             document.getElementById('project-modal').classList.remove('hidden');
             document.getElementById('project-modal').classList.add('flex');
             document.body.style.overflow = 'hidden';
@@ -739,6 +911,47 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeModal();
         });
+
+        // Idioma: ?lang= en la URL, luego la eleccion guardada, luego el idioma del navegador
+        function detectLang() {
+            const param = new URLSearchParams(location.search).get('lang');
+            if (param === 'es' || param === 'en') return param;
+            try {
+                const saved = localStorage.getItem('lang');
+                if (saved === 'es' || saved === 'en') return saved;
+            } catch (e) {}
+            return (navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en';
+        }
+
+        function setLang(newLang) {
+            lang = newLang;
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                if (el.dataset.es === undefined) el.dataset.es = el.innerHTML;
+                const en = I18N_EN[el.dataset.i18n];
+                el.innerHTML = lang === 'en' && en !== undefined ? en : el.dataset.es;
+            });
+            document.title = META[lang].title;
+            document.querySelector('meta[name="description"]').setAttribute('content', META[lang].description);
+            document.querySelectorAll('[data-cv]').forEach(a => a.setAttribute('href', META[lang].cv));
+            document.querySelectorAll('[data-lang-opt]').forEach(opt => {
+                const active = opt.dataset.langOpt === lang;
+                opt.classList.toggle('text-blue-400', active);
+                opt.classList.toggle('text-slate-500', !active);
+            });
+            renderProjects();
+        }
+
+        document.getElementById('lang-btn').addEventListener('click', () => {
+            const next = lang === 'es' ? 'en' : 'es';
+            setLang(next);
+            try { localStorage.setItem('lang', next); } catch (e) {}
+            const url = new URL(location.href);
+            url.searchParams.set('lang', next);
+            history.replaceState(null, '', url);
+        });
+
+        setLang(detectLang());
 
         // Mobile menu toggle
         const menuBtn = document.getElementById('menu-btn');
