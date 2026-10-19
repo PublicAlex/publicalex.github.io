@@ -428,11 +428,15 @@
                 <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-4" data-i18n="projects.title">Proyectos</h2>
                 <div class="w-20 h-1 bg-blue-500 rounded-full mx-auto"></div>
                 <p class="text-slate-400 mt-4 max-w-2xl mx-auto" data-i18n="projects.sub">
-                    Una selección de proyectos de IA, automatización, DevOps, IoT y apps móviles.
-                    Haz clic en cualquiera para ver cómo funciona.
+                    Sistemas desarrollados para empresas y proyectos propios de IA, datos, DevOps, IoT y apps móviles.
+                    Haz clic en cualquiera para ver capturas y detalles.
                 </p>
             </div>
+            <div id="projects-filters" class="flex flex-wrap justify-center gap-2 mb-10"></div>
             <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div class="text-center mt-10">
+                <button id="projects-more" type="button" class="hidden px-6 py-3 rounded-xl border border-slate-700 text-slate-300 font-semibold hover:bg-slate-800 transition-all duration-300"></button>
+            </div>
         </div>
     </section>
 
@@ -563,12 +567,17 @@
                     </svg>
                 </button>
                 <div id="modal-image" class="aspect-video bg-slate-800 m-0.5 rounded-xl overflow-hidden"></div>
-                <div id="modal-thumbs" class="hidden flex-wrap gap-2 px-6 sm:px-8 pt-4"></div>
+                <p id="modal-caption" class="hidden px-6 sm:px-8 pt-3 text-sm text-slate-300"></p>
+                <div id="modal-thumbs" class="hidden gap-2 px-6 sm:px-8 pt-4 pb-1 overflow-x-auto"></div>
                 <p id="modal-sample" class="hidden px-6 sm:px-8 pt-3 text-xs text-slate-500"></p>
                 <div class="p-6 sm:p-8">
-                    <span id="modal-category" class="text-xs text-blue-400 font-medium"></span>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span id="modal-category" class="text-xs text-blue-400 font-medium"></span>
+                        <span id="modal-pro" class="hidden text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"></span>
+                    </div>
                     <h3 id="modal-title" class="text-2xl font-bold text-white mt-2 mb-4 font-display"></h3>
                     <p id="modal-description" class="text-slate-400 leading-relaxed"></p>
+                    <div id="modal-extra"></div>
                     <div class="mt-6">
                         <h4 class="text-sm font-semibold text-white mb-3" data-i18n="modal.tech">Tecnologías</h4>
                         <div id="modal-tech" class="flex flex-wrap gap-2"></div>
@@ -594,6 +603,7 @@
         </div>
     </footer>
 
+    <script src="projects.js"></script>
     <script>
         // Textos en ingles; el espanol se toma del HTML (data-i18n)
         const I18N_EN = {
@@ -643,7 +653,7 @@
             'edu.unal.titulo': 'Web Development Diploma',
             'edu.unal.desc': 'I took part in a government program to strengthen my knowledge of web development and modern methodologies. I learned microservices architecture, non-relational databases, JWT authentication and key tools for developing and deploying web applications.',
             'projects.title': 'Projects',
-            'projects.sub': 'A selection of AI, automation, DevOps, IoT and mobile projects. Click any of them to see how it works.',
+            'projects.sub': 'Systems built for companies plus my own AI, data, DevOps, IoT and mobile projects. Click any of them to see screenshots and details.',
             'testi.title': 'Testimonials',
             'testi.spain': 'Spain',
             'testi.uk': 'United Kingdom',
@@ -667,7 +677,12 @@
                 cv: 'files/cv.pdf',
                 viewProject: 'Ver proyecto',
                 privateCode: 'Código privado',
-                sample: 'Capturas con datos de ejemplo.'
+                sample: 'Capturas con datos de ejemplo.',
+                filters: { all: 'Todos', ia: 'IA', web: 'Web', datos: 'Datos', movil: 'Móvil & IoT', devops: 'DevOps' },
+                more: 'Ver todos los proyectos',
+                highlights: 'Funcionalidades destacadas',
+                challenges: 'Retos técnicos',
+                pro: 'Proyecto profesional'
             },
             en: {
                 title: 'Alexander Aragón - Software Engineer | AI & DevOps',
@@ -675,170 +690,15 @@
                 cv: 'files/cv-en.pdf',
                 viewProject: 'View project',
                 privateCode: 'Private source code',
-                sample: 'Screenshots use sample data.'
+                sample: 'Screenshots use sample data.',
+                filters: { all: 'All', ia: 'AI', web: 'Web', datos: 'Data', movil: 'Mobile & IoT', devops: 'DevOps' },
+                more: 'See all projects',
+                highlights: 'Key features',
+                challenges: 'Technical challenges',
+                pro: 'Professional project'
             }
         };
 
-        // images: capturas ('@cover' = diagrama images/covers/<cover>-<idioma>.webp); sample: capturas con datos de ejemplo
-        const projects = [
-            {
-                cover: 'auto-postulador',
-                images: ['images/projects/auto-postulador-1.webp', 'images/projects/auto-postulador-2.webp', 'images/projects/auto-postulador-3.webp', 'images/projects/auto-postulador-4.webp', '@cover'],
-                sample: true,
-                category: { es: 'IA & Automatización', en: 'AI & Automation' },
-                title: { es: 'Auto-postulador de empleos con IA', en: 'AI Job Auto-Applier' },
-                short: {
-                    es: 'Scrapea 5 portales de empleo, analiza cada oferta contra el CV con Gemini y postula sola.',
-                    en: 'Scrapes 5 job boards, scores every offer against the CV with Gemini and applies on its own.'
-                },
-                description: {
-                    es: 'Sistema que busca ofertas en LinkedIn, Computrabajo, elempleo, Indeed y Workana con scrapers en Python y Playwright. Cada oferta se analiza con IA contra el CV del usuario (Gemini, en lotes para ahorrar cuota, con control de límites y reintentos), y a las compatibles se postula automáticamente en los portales que lo permiten; al final envía un reporte por correo. Soporta varios usuarios, tiene panel web de administración y programador de corridas, y corre en un servidor Linux desplegado con GitHub Actions y systemd. Ya ha analizado miles de ofertas.',
-                    en: 'System that collects job offers from LinkedIn, Computrabajo, elempleo, Indeed and Workana with Python and Playwright scrapers. Every offer is scored by AI against the user\'s CV (Gemini, batched to save quota, with rate limiting and retries), and matching offers get an automatic application on the boards that allow it; a summary is then sent by email. It supports multiple users, has a web admin panel and a run scheduler, and runs on a Linux server deployed with GitHub Actions and systemd. It has already analyzed thousands of offers.'
-                },
-                tech: ['Python', 'Playwright', 'Gemini', 'SQLite', 'GitHub Actions', 'systemd'],
-                links: []
-            },
-            {
-                cover: 'asesor-voz',
-                images: ['images/projects/asesor-voz-1.webp', '@cover'],
-                sample: true,
-                category: { es: 'IA conversacional', en: 'Conversational AI' },
-                title: { es: 'Asesor de ventas por voz', en: 'AI Voice Sales Agent' },
-                short: {
-                    es: 'Prototipo que conversa por voz en tiempo real con Gemini Live y registra el resultado de la llamada.',
-                    en: 'Prototype that holds real-time voice conversations with Gemini Live and logs the call outcome.'
-                },
-                description: {
-                    es: 'Prototipo de asesor de ventas que atiende una llamada y conversa por voz en tiempo real. Una sola conexión a Gemini Live escucha al cliente, decide qué responder y habla, con respuestas en 1,2 a 1,9 segundos, frente a unos 4,9 s de la cadena voz a texto + LLM + texto a voz, que también medí. El guion de venta, las objeciones y los productos se editan en un archivo de texto, y durante la llamada el asesor ejecuta acciones (cliente quiere comprar, no interesado, colgar) que se envían por webhook. Si el cliente lo interrumpe, se calla en unos 0,4 s.',
-                    en: 'Sales agent prototype that answers a call and talks in real time. A single Gemini Live connection listens to the customer, decides what to say and speaks, replying in 1.2 to 1.9 seconds, versus about 4.9 s for a speech-to-text + LLM + text-to-speech chain, which I also benchmarked. The sales script, objections and products live in an editable text file, and during the call the agent triggers actions (customer wants to buy, not interested, hang up) that are sent through a webhook. When the customer interrupts, it stops talking within about 0.4 s.'
-                },
-                tech: ['Python', 'Gemini Live', 'WebSocket', 'Web Audio', 'Webhooks'],
-                links: []
-            },
-            {
-                images: ['images/rp-landing.png', 'images/rp-backoffice.png', 'images/rp-admin.png', 'images/rp-android.png', 'images/rp-ios.png'],
-                category: { es: 'Plataforma web y móvil', en: 'Web & mobile platform' },
-                title: { es: 'Racket Pulse', en: 'Racket Pulse' },
-                short: {
-                    es: 'Plataforma de pádel: landing, backoffice, panel de administración y apps para Android e iOS.',
-                    en: 'Padel platform: landing page, backoffice, admin panel and Android and iOS apps.'
-                },
-                description: {
-                    es: 'Plataforma completa para jugadores y clubes de pádel, desarrollada en Innobyte Nexus Partners. Incluye landing page, backoffice para gestionar reservas, usuarios, pagos y reportes, panel de administración con roles, permisos y monitoreo en vivo, y apps nativas para Android e iOS hechas con React Native. Trabajé en la arquitectura backend con NestJS y TypeScript, las APIs para web y móvil, las integraciones con Stripe, Fiuu y Nominatim, y el despliegue de los servicios.',
-                    en: 'Full platform for padel players and clubs, built at Innobyte Nexus Partners. It includes a landing page, a backoffice to manage bookings, users, payments and reports, an admin panel with roles, permissions and live monitoring, and native Android and iOS apps built with React Native. I worked on the NestJS/TypeScript backend architecture, the web and mobile APIs, the Stripe, Fiuu and Nominatim integrations, and service deployment.'
-                },
-                tech: ['NestJS', 'TypeScript', 'React', 'React Native', 'PostgreSQL', 'Docker'],
-                links: [
-                    { label: 'Landing', url: 'https://racketpulse.com/' },
-                    { label: 'Backoffice', url: 'https://backoffice.racketpulse.com/' },
-                    { label: 'Admin', url: 'https://sysadmin.racketpulse.com/' },
-                    { label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.racketpulse.app' },
-                    { label: 'App Store', url: 'https://apps.apple.com/es/app/racket-pulse/id6749810362' }
-                ]
-            },
-            {
-                cover: 'opencode-mobile',
-                images: ['images/projects/opencode-mobile-1.webp', '@cover'],
-                sample: true,
-                category: { es: 'Herramientas dev', en: 'Dev tools' },
-                title: { es: 'Opencode Mobile', en: 'Opencode Mobile' },
-                short: {
-                    es: 'Agente Node.js + MQTT + app Android para seguir en vivo, desde el celular, a un agente de código con IA.',
-                    en: 'Node.js agent + MQTT + Android app to follow an AI coding agent live from your phone.'
-                },
-                description: {
-                    es: 'Permite monitorear desde el celular, en tiempo real y sin estar en la misma red, las terminales de Opencode (un agente de programación con IA) que corren en el PC. Un agente en Node.js y TypeScript escucha los eventos de Opencode por SSE y los publica en un broker MQTT (HiveMQ Cloud); la app Android, hecha en Kotlin con Jetpack Compose, se suscribe al canal y muestra las terminales en vivo. El emparejamiento se hace escaneando un código QR, y el agente arranca Opencode si no está corriendo.',
-                    en: 'Lets you monitor, in real time and from anywhere, the Opencode terminals (an AI coding agent) running on your PC. A Node.js/TypeScript agent listens to Opencode events over SSE and publishes them to an MQTT broker (HiveMQ Cloud); the Android app, built with Kotlin and Jetpack Compose, subscribes to the channel and shows the terminals live. Pairing is done by scanning a QR code, and the agent starts Opencode if it is not running.'
-                },
-                tech: ['Node.js', 'TypeScript', 'MQTT', 'Kotlin', 'Jetpack Compose'],
-                links: []
-            },
-            {
-                cover: 'security-monitor',
-                images: ['images/projects/security-monitor-1.webp', '@cover'],
-                sample: true,
-                category: { es: 'DevOps · Seguridad', en: 'DevOps · Security' },
-                title: { es: 'Monitor de seguridad para Ubuntu', en: 'Ubuntu Security Monitor' },
-                short: {
-                    es: 'Servicio systemd en Bash que avisa al celular cada acceso SSH, uso de sudo y comando sensible.',
-                    en: 'Bash systemd service that pushes a phone alert for every SSH login, sudo use and sensitive command.'
-                },
-                description: {
-                    es: 'Servicio para servidores Ubuntu que vigila los registros del sistema y envía una notificación push por Gotify ante accesos SSH, uso de sudo y comandos sensibles como docker o rm. Tiene filtros configurables (por ejemplo, ignorar accesos con llave pública desde redes privadas), deduplicación de eventos para no saturar de alertas y control de instancia única. Se instala en un solo paso: el instalador detecta si es una instalación nueva o una actualización y lo deja corriendo como servicio systemd.',
-                    en: 'Service for Ubuntu servers that watches system logs and sends a Gotify push notification on SSH logins, sudo use and sensitive commands such as docker or rm. It has configurable filters (for example, ignoring public-key logins from private networks), event deduplication to avoid alert fatigue, and single-instance locking. It installs in one step: the installer detects whether it is a new install or an update and leaves it running as a systemd service.'
-                },
-                tech: ['Bash', 'systemd', 'Linux', 'Gotify', 'SSH'],
-                links: []
-            },
-            {
-                cover: 'gps-moto',
-                images: ['images/projects/gps-moto-1.webp', 'images/projects/gps-moto-2.webp', '@cover'],
-                category: { es: 'IoT · Android', en: 'IoT · Android' },
-                title: { es: 'Alerta Fotomultas (GPS para moto)', en: 'Speed Camera Alert (Motorcycle GPS)' },
-                short: {
-                    es: 'Avisa de cámaras de fotodetección si vas sobre el límite: dispositivo ESP32 con GPS y app Android sin internet.',
-                    en: 'Warns about speed cameras when you are over the limit: an ESP32 GPS device and an offline Android app.'
-                },
-                description: {
-                    es: 'Sistema de bajo costo que avisa al motociclista cuando se acerca a una cámara de fotodetección en Colombia y va por encima del límite. Tiene dos versiones con la misma lista de 725 cámaras y la misma lógica de alerta: un dispositivo con ESP32-C3, GPS NEO-6M y pantalla OLED, que graba los viajes y se configura por Wi-Fi, y una app Android que funciona sin internet, pesa unos 97 KB y avisa con pantalla, vibración y notificación. Incluye herramientas en Python para consolidar la lista de cámaras (ANSV, secretarías de movilidad y OpenStreetMap) y verla en un mapa. Las dos versiones están probadas en banco; falta la prueba en ruta.',
-                    en: 'Low-cost system that warns motorcyclists when approaching a speed camera in Colombia above the limit. It comes in two versions sharing the same list of 725 cameras and the same alert logic: a device with an ESP32-C3, a NEO-6M GPS and an OLED display that records trips and is configured over Wi-Fi, and an Android app that works offline, weighs about 97 KB and alerts with screen, vibration and notification. It includes Python tools to build the camera list (national road safety agency, city transit offices and OpenStreetMap) and view it on a map. Both versions are bench-tested; road testing is pending.'
-                },
-                tech: ['ESP32', 'C++ (Arduino)', 'Kotlin', 'Android', 'Python', 'OpenStreetMap'],
-                links: []
-            },
-            {
-                cover: 'nequi-confirmer',
-                images: ['images/projects/nequi-confirmer-1.webp', '@cover'],
-                sample: true,
-                category: { es: 'App Android · Pagos', en: 'Android App · Payments' },
-                title: { es: 'Nequi Confirmer', en: 'Nequi Confirmer' },
-                short: {
-                    es: 'Confirma que un pago Nequi sí llegó cruzando el comprobante con la notificación real, y lo anuncia en voz alta.',
-                    en: 'Confirms a Nequi payment really arrived by matching the receipt with the real notification, and announces it out loud.'
-                },
-                description: {
-                    es: 'App Android para negocios que cobran por Nequi. Muestra el QR de cobro y escanea el comprobante del cliente; luego lo cruza con la notificación o el SMS real de Nequi (monto, nombre y hora) para confirmar que el pago sí llegó, y anuncia el resultado en voz alta. Guarda el historial de pagos en una base de datos local.',
-                    en: 'Android app for shops that get paid through Nequi. It shows the payment QR and scans the customer\'s receipt, then matches it against the real Nequi notification or SMS (amount, name and time) to confirm the payment actually arrived, and announces the result out loud. Payment history is stored in a local database.'
-                },
-                tech: ['Kotlin', 'Jetpack Compose', 'CameraX', 'ML Kit', 'Room', 'Text-to-Speech'],
-                links: []
-            },
-            {
-                cover: 'alerta-destino',
-                images: ['images/projects/alerta-destino-1.webp', '@cover'],
-                category: { es: 'App Android', en: 'Android App' },
-                title: { es: 'AlertaDestino', en: 'AlertaDestino' },
-                short: {
-                    es: 'Alarma GPS que suena cuando te acercas a tu parada de bus. Publicada en Google Play.',
-                    en: 'GPS alarm that rings as you approach your bus stop. Published on Google Play.'
-                },
-                description: {
-                    es: 'App Android que te avisa cuando te acercas a tu parada destino, para no pasarte durante un viaje en bus. Eliges la parada en Google Maps y un servicio en primer plano sigue tu ubicación por GPS aunque la app esté cerrada; al acercarte suena la alarma. Puede reanudar el monitoreo después de reiniciar el teléfono y guarda tus destinos frecuentes.',
-                    en: 'Android app that alerts you as you approach your destination stop, so you never miss it on a bus ride. You pick the stop on Google Maps and a foreground service tracks your GPS location even with the app closed; the alarm rings as you get close. It can resume monitoring after a phone restart and saves your frequent destinations.'
-                },
-                tech: ['Kotlin', 'Jetpack Compose', 'Google Maps', 'Foreground Service'],
-                links: [
-                    { label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.alertadestino.app' }
-                ]
-            },
-            {
-                images: ['images/inmosurco.png'],
-                category: { es: 'Página Web', en: 'Website' },
-                title: { es: 'Inmobiliaria Surcolombiana', en: 'Inmobiliaria Surcolombiana' },
-                short: {
-                    es: 'Sitio web para operaciones de registro de inmuebles y contacto con clientes.',
-                    en: 'Website for property listings and client contact.'
-                },
-                description: {
-                    es: 'Desarrollamos un sitio web para las operaciones de registro de inmuebles y contacto con el cliente de la inmobiliaria Surcolombiana. El desarrollo se efectuó en WordPress y el servicio se entregó completamente funcional y con garantía de soporte por 1 año.',
-                    en: 'We built a website for the real estate agency Inmobiliaria Surcolombiana to register properties and handle client contact. It was built in WordPress and delivered fully functional with a one-year support guarantee.'
-                },
-                tech: ['WordPress', 'PHP', 'HTML', 'CSS'],
-                links: [
-                    { label: { es: 'Ver proyecto', en: 'View project' }, url: 'https://inmobiliariasurcolombiana.com.co/' }
-                ]
-            }
-        ];
 
         const ICON_EXTERNAL = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
@@ -857,11 +717,41 @@
             return p.images.map(src => src === '@cover' ? cover : src);
         }
 
+        function esc(text) {
+            return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        const FILTROS = ['all', 'ia', 'web', 'datos', 'movil', 'devops'];
+        const INICIALES = 9;
+        let filtro = 'all';
+        let verTodos = false;
+
+        function renderFilters() {
+            document.getElementById('projects-filters').innerHTML = FILTROS.map(f => {
+                const n = f === 'all' ? projects.length : projects.filter(p => p.tags.includes(f)).length;
+                const estilo = f === filtro
+                    ? 'bg-blue-600 border-blue-600 text-white'
+                    : 'border-slate-700 text-slate-400 hover:text-white hover:border-slate-500';
+                return '<button type="button" data-filtro="' + f + '" class="px-4 py-2 rounded-full text-sm font-medium border transition-colors ' + estilo + '">' + META[lang].filters[f] + ' <span class="opacity-60">' + n + '</span></button>';
+            }).join('');
+            document.querySelectorAll('[data-filtro]').forEach(btn => btn.addEventListener('click', () => {
+                filtro = btn.dataset.filtro;
+                verTodos = false;
+                renderProjects();
+            }));
+        }
+
         function renderProjects() {
-            document.getElementById('projects-grid').innerHTML = projects.map((p, i) => `
+            renderFilters();
+            const visibles = projects
+                .map((p, i) => ({ p, i }))
+                .filter(({ p }) => filtro === 'all' || p.tags.includes(filtro));
+            const recortar = filtro === 'all' && !verTodos && visibles.length > INICIALES;
+            document.getElementById('projects-grid').innerHTML = (recortar ? visibles.slice(0, INICIALES) : visibles).map(({ p, i }) => `
                 <div onclick="openModal(${i})" onkeydown="if (event.key === 'Enter') openModal(${i})" role="button" tabindex="0" class="cursor-pointer group rounded-xl bg-slate-800/30 border border-slate-800 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                    <div class="aspect-video bg-slate-800 overflow-hidden">
-                        <img src="${projectImages(p)[0]}" alt="${tr(p.title)}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="relative aspect-video bg-slate-800 overflow-hidden">
+                        <img src="${projectImages(p)[p.portada || 0]}" alt="${tr(p.title)}" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        ${p.pro ? '<span class="absolute top-3 left-3 text-xs px-2 py-0.5 rounded-full bg-slate-950/80 text-emerald-400 border border-emerald-500/30">' + META[lang].pro + '</span>' : ''}
                     </div>
                     <div class="p-5">
                         <span class="text-xs text-blue-400 font-medium">${tr(p.category)}</span>
@@ -872,6 +762,9 @@
                         </div>
                     </div>
                 </div>`).join('');
+            const mas = document.getElementById('projects-more');
+            mas.textContent = META[lang].more + ' (' + projects.length + ')';
+            mas.classList.toggle('hidden', !recortar);
         }
 
         function showModalImage(src, alt) {
@@ -881,14 +774,24 @@
         function openModal(index) {
             const p = projects[index];
             const images = projectImages(p);
-            showModalImage(images[0], tr(p.title));
-
+            const pies = p.captions ? tr(p.captions) : [];
             const thumbs = document.getElementById('modal-thumbs');
-            if (images.length > 1) {
-                thumbs.innerHTML = images.map(src => '<button type="button" class="w-20 aspect-video rounded-lg overflow-hidden border border-slate-700 hover:border-blue-500/60 transition-colors"><img src="' + src + '" alt="" class="w-full h-full object-cover"></button>').join('');
-                thumbs.querySelectorAll('button').forEach((btn, i) => {
-                    btn.addEventListener('click', () => showModalImage(images[i], tr(p.title)));
+            const caption = document.getElementById('modal-caption');
+
+            function mostrar(k) {
+                showModalImage(images[k], tr(p.title));
+                caption.textContent = pies[k] || '';
+                caption.classList.toggle('hidden', !caption.textContent);
+                thumbs.querySelectorAll('button').forEach((btn, j) => {
+                    btn.classList.toggle('border-blue-500', j === k);
+                    btn.classList.toggle('border-slate-700', j !== k);
+                    if (j === k) thumbs.scrollLeft = btn.offsetLeft - thumbs.clientWidth / 2 + btn.clientWidth / 2;
                 });
+            }
+
+            if (images.length > 1) {
+                thumbs.innerHTML = images.map(src => '<button type="button" class="shrink-0 w-20 aspect-video rounded-lg overflow-hidden border hover:border-blue-500/60 transition-colors"><img src="' + src + '" alt="" loading="lazy" class="w-full h-full object-cover"></button>').join('');
+                thumbs.querySelectorAll('button').forEach((btn, i) => btn.addEventListener('click', () => mostrar(i)));
                 thumbs.classList.remove('hidden');
                 thumbs.classList.add('flex');
             } else {
@@ -896,14 +799,25 @@
                 thumbs.classList.add('hidden');
                 thumbs.classList.remove('flex');
             }
+            mostrar(p.portada || 0);
 
             const sample = document.getElementById('modal-sample');
             sample.textContent = META[lang].sample;
             sample.classList.toggle('hidden', !p.sample);
 
+            const pro = document.getElementById('modal-pro');
+            pro.textContent = META[lang].pro;
+            pro.classList.toggle('hidden', !p.pro);
+
             document.getElementById('modal-category').textContent = tr(p.category);
             document.getElementById('modal-title').textContent = tr(p.title);
             document.getElementById('modal-description').textContent = tr(p.description);
+
+            const lista = (titulo, items) => '<div class="mt-6"><h4 class="text-sm font-semibold text-white mb-3">' + titulo + '</h4><ul class="text-sm text-slate-400 leading-relaxed space-y-1.5 list-disc pl-5">' + items.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></div>';
+            document.getElementById('modal-extra').innerHTML =
+                (p.highlights ? lista(META[lang].highlights, tr(p.highlights)) : '') +
+                (p.challenges ? lista(META[lang].challenges, tr(p.challenges)) : '');
+            document.querySelector('#project-modal .overflow-y-auto').scrollTop = 0;
             document.getElementById('modal-tech').innerHTML = p.tech.map(t => '<span class="px-3 py-1 rounded-lg bg-slate-800 text-slate-400 text-sm border border-slate-700">' + t + '</span>').join('');
 
             const links = document.getElementById('modal-links');
@@ -962,6 +876,11 @@
             });
             renderProjects();
         }
+
+        document.getElementById('projects-more').addEventListener('click', () => {
+            verTodos = true;
+            renderProjects();
+        });
 
         document.getElementById('lang-btn').addEventListener('click', () => {
             const next = lang === 'es' ? 'en' : 'es';
